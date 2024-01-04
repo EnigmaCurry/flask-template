@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+{% block header %}{% endblock %}
+
+<form method="POST" action="/update_task_done">
+    Task id: <input value="" name="task_id" type="input" >
+    Done (1 or 0): <input value = "" name="done">
+    <input type="submit" value="UPDATE"></form>
+{% endblock %}

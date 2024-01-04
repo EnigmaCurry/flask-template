@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+  {% block header %}{% endblock %}
+  <h2>{{data['note']['title']}} <button style="padding: 0; border: none; background: none; cursor: pointer" onclick="form_submit()"><img title="Save"  src="/static/images/save-30.png" ></button></h2>
+  <form id="meta" method="POST" action="/save">
+    <input type="hidden" name="id" value="{{data['note']['id']}}" />
+    
+    <div class="meta" >
+      <div class="left" >
+        <div class="left" style="vertical-align: top;">Tags:&nbsp;&nbsp;</div>
+        <div class="left">
+          <select class="multiselect"  multiple name="tags">
+            {% for tag in data['tags'] %}
+              <option value="{{tag['id']}}" {{'selected' if tag['note_id'] is not none}}>{{tag['name']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>    
+      <div class="left">
+        &nbsp;&nbsp;&nbsp;New Tag:&nbsp;&nbsp;<input type="text" name="new_tag">
+      </div>
+      <div class="left" >  
+        &nbsp;&nbsp;&nbsp;Pinned:&nbsp;&nbsp;<input type="checkbox" {{'checked' if data['note']['pin'] == 1 }} name="pin" value="1">
+      </div>
+    </div>
+    <div class="clear"><BR></div>
+    <div >Title: <input name="title" type="text" value="{{data['note']['title']}}" /></div>
+    <div style="width: 100%">
+      Text: <BR/>
+      <textarea name="note" style="width: 100%; height:50vh" >{{data['note']['note']|safe}} </textarea></div>
+  </form> 
+  
+  <div style="float: right"><a href="/delete/{{data['note']['id']}}" class="confirmation">Delete this note!</a> </div>
+  <script>
+    function form_submit(){
+      meta.submit();
+    }
+  </script>
+    
+{% endblock %}

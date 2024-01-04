@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+  {% block header %}{% endblock %}
+  <style>
+    div.m5 {margin-right: 15px;}
+    div.mt-5 {margin-top: 5px;}
+  </style>
+  <div class = "m5">
+    {% if past_due is defined and past_due|length > 0 %}
+      <h2>Past Due</h2>
+      <ul class="task-list">
+      {% for due in past_due %}
+        <li class="task-list-item"><input type="checkbox" disabled/> 
+          {{due['name']}} -- <b>Due:</b> {{due['due_date']}}
+          <a href="/note/{{due['note_id']}}">Parent Note</a>
+          <span data="{{due['id']}}"/>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %} 
+  </div>
+  <div class = "m5">
+    {% if due_today is defined and due_today|length > 0 %}
+      <h2>Due Today</h2>
+      <ul class="task-list">
+      {% for due in due_today %}
+        <li class="task-list-item"><input type="checkbox" disabled/>
+          {{due['name']}} -- <b>Due:</b> {{due['due_date']}} 
+          <a href="/note/{{due['note_id']}}">Parent Note</a>
+          <span data="{{due['id']}}"/>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %} 
+  </div>
+
+  
+  <div class = "left m5">
+  {% if pins is defined and pins|length > 0 %}
+    <h2>Pinned</h2>
+    {% for pin in pins %}
+        <div class="mt-5"><a href="/note/{{pin['slug']}}">{{pin['title']}}</a></div>
+    {% endfor %}
+  {% endif %} 
+  </div>
+  <div class="left m5">
+  {% if rows is defined and rows|length > 0 %}
+    <h2>Recent</h2>
+    {% for row in rows %}
+        <div class="mt-5"><a href="/note/{{row['slug']}}">{{row['title']}}</a></div>
+    {% endfor %}
+  {% endif %} 
+  </div>
+  <div class="left m5" />
+  {% if tags is defined and tags|length > 0 %}
+
+    <h2>Tags</h2>            
+    {% for tag in tags %}
+        <div class="mt-5"> <a href="/tag/{{tag['tag_id']}}">{{tag['name']}}</a>({{tag['count']}})</div>
+    {% endfor %}
+  {% endif %}  
+  </div>
+
+
+{% endblock %}

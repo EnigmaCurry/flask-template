@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="container2">
+    <h2>Add New Media</h2>
+    <form method="POST" 
+      action="/add-media"
+      enctype="multipart/form-data" >
+        <div>  
+        New media: <input type="file" name="new_media" id="new_media"><BR>
+        Title: <input type="text" name="title">    
+        <input type="submit" value="Submit">
+        </div>
+    </form>  
+</div>
+
+{% endblock %}    

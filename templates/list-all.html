@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+  {% block header %}{% endblock %}
+
+  
+  {% if rows is not none %}
+    {% if h2 is not none %}
+      <h2>{{h2}}</h2>
+    {% endif %}  
+    {% for row in rows %}
+        <div style="clear: both; width: 150px; float: left">{{row['c_name'] if row['c_name'] is not none and whoami != 'search'}}</div>
+        <div style="float: left"> <a href="/note/{{row['slug']}}">{{row['title']}}</a><BR>
+        {{row['context']|safe}}</div>
+    {% endfor %}
+
+  {% endif %}  
+{% endblock %}

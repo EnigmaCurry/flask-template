@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/responsive-table2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/static/multi-select.css">
+  <script type="text/javascript" src="/static/script/multi-select.js"></script>
+  <style>
+    img {max-width: 800px;}
+    .clear {clear: both}
+    .left {float: left}
+    .meta {padding:5px;}
+    .tag {
+        float: left; 
+        padding-right: 2px; 
+        padding-left: 2px; 
+        margin-left: 2px; 
+        margin-right: 2px; 
+        border: 1px solid black;
+      }
+    h2 {margin-bottom: 2px;}
+    hr {margin-bottom: 0px;}  
+    ul li {margin-bottom: 8px;} 
+    textarea {font-size:large;}
+
+@media  (min-width: 398px) {
+  img { max-width: 350px}
+}
+
+
+@media  (min-width: 500px) {
+  img { max-width: 400px}
+}
+
+@media  (min-width: 600px) {
+  img { max-width: 500px}
+}
+@media  (min-width: 1000px) {
+    img { max-width: 800px}
+}
+  </style>
+  <script>
+    $(document).ready(function(){
+      $("#media img").on( "click", function() {
+        copiedtext = $($(this).siblings()[1]).text()
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(copiedtext)
+                .then(() => {
+                    alert('copied to clipboard')
+                })
+                .catch((error) => {
+                    alert('could not copy to clipboard ' + error)
+                });
+        } else {
+            alert('could not copy to clipboard ' )
+        }
+      });
+      $('.confirmation').on('click', function () {
+        return confirm('Are you sure?');
+      });
+      $(function(){
+        $('.multiselect').multiSelect();
+        $("input[type='checkbox']").removeAttr('disabled');
+      });
+      $(".task-list-item input").click(function(){
+
+        var done = 0;
+        if ($(this).is(':checked')) {
+          done = 1;
+        }
+        var id =  $($(this).siblings('span')[0]).attr('data')
+        $.ajax({
+          type: "POST",
+          url: "/update_task_done",
+          data: {task_id: id, done: done},
+          dataType: 'json',
+          success: function(data){
+            console.log(data);
+          },
+          error: function(xhr, status, error){
+            alert("Update failed:" + error);
+          }
+        });
+        
+      })
+    });
+  </script>          
+  
+</head>
+<body>
+  <div class="container">
+    {% include 'header.html' %} 
+
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+</html>

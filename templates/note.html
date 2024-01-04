@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+  {% block header %}{% endblock %}
+
+    <div >
+    <h2>{{data['note']['title']}} <a href="/edit/{{data['note']['id']}}"><img title="Edit" src="/static/images/edit-35.png" ></a></h2>
+    <div id="meta">
+      <hr>
+      <div class="clear"></div>
+      <div class="left" style="margin: 5px;">
+        Tags: 
+      </div>
+      {% for tag in data['tags'] if tag['note_id'] is not none %}
+          <div class="tag" style="margin-top: 4px;"><a href="/tag/{{ tag['id'] }}"> {{tag['name'] }}</a> </div>
+      {% endfor %}
+      <div class="clear"/>
+      <hr>
+    </div id="note-display">
+    <div class="clear">{{data['note']['note']|safe}}</div>
+    </div>
+  
+{% endblock %}

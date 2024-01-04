@@ -1,0 +1,6 @@
+{% extends "public_layout.html" %}
+
+{% block content %}
+    <h2>{{note['title']}}</h2>
+    <div>{{note['note']|safe}}</div>
+{% endblock %}

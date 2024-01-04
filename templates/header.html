@@ -1,0 +1,15 @@
+  <header >
+    <H1>Notes {{response_error if response_error is not none}}</H1>
+    <div style="padding: 5px; width:fit-content; border: 1px solid gray; background-color: lightgray">
+      <nav style="font-size: 1.8rem;" >
+            <a href="/">Home</a>&nbsp;&nbsp;
+            <a href="/add">New Note</a>&nbsp;&nbsp;
+            <a href="/tags">Tags</a>&nbsp;&nbsp;
+            <a href="/media" target="media">Media</a>&nbsp;&nbsp;
+      </nav>
+      
+      <div style="padding-top: 5px">    
+        <form method="GET" action="/search"><input value="{{text}}" name="text" type="input" style="width: 150px;"><input type="submit" value="Search"></form>
+      </div>
+    </div> 
+  </header> 

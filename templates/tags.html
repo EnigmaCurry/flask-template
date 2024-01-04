@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+  {% block header %}{% endblock %}
+
+  
+  {% if tags is not none %}
+  <h2>Tags</h2>
+    {% for tag in tags %}
+        <div> <a href="/tag/{{tag['tag_id']}}">{{tag['name']}}</a>({{tag['count']}})
+    {% endfor %}
+
+  {% endif %}  
+{% endblock %}

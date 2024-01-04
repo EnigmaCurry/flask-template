@@ -1,0 +1,6 @@
+form.magic { display: table; }
+form.magic > div.field { display: table-row; }
+form.magic > div.field > label,input { display: table-cell; padding: 5px 10px 5px 10px;}
+form.magic > div.field > input[type=text] { width: 240px;}
+form.magic > input[type=submit] { margin: 10px; }
+

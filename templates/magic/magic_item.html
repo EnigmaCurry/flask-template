@@ -1,0 +1,21 @@
+{% extends "magic/magic_base.html" %} {% block content %}
+<h2>{{ magic_item.name }}</h2>
+
+<table border="1">
+  <tr>
+    <td>ID</td>
+    <td>{{ magic_item.id }}</td>
+  </tr>
+  {% if magic_item.created != None %}
+  <tr>
+    <td>Created</td>
+    <td></td>
+  </tr>
+  {% endif %} {% if magic_item.destroyed != None %}
+  <tr>
+    <td>Destroyed</td>
+    <td></td>
+  </tr>
+  {% endif %}
+</table>
+{% endblock %}

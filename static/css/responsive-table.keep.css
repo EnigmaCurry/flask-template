@@ -1,0 +1,102 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir", "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans", "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu", "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+a {
+  color: blue;
+}
+a:hover, a:focus {
+  font-weight: bold;
+}
+
+.container {
+  margin: 5% 3%;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 1.5em;
+  border-spacing: 0;
+}
+table thead {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+table thead th {
+  background-color: #333333;
+  border: 1px solid #aaaa99;
+  font-weight: normal;
+  text-align: center;
+  color: white;
+}
+table thead th:first-of-type {
+  text-align: left;
+}
+table tbody,
+table tr,
+table th,
+table td {
+  display: block;
+  padding: 0;
+  text-align: left;
+  white-space: normal;
+}
+table th,
+table td {
+  padding: 0.5em;
+  vertical-align: middle;
+}
+table caption {
+  margin-bottom: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+}
+@media (min-width: 48em) {
+  table caption {
+    font-size: 1.5em;
+  }
+}
+table tfoot {
+  font-size: 0.8em;
+  font-style: italic;
+}
+table tbody tr {
+  margin-bottom: 1em;
+}
+table tbody tr:last-of-type {
+  margin-bottom: 0;
+}
+table tbody th[scope=row] {
+  background-color: #333333;
+  color: white;
+}
+table tbody td {
+  text-align: right;
+}
+table tbody td[data-type=currency] {
+  text-align: right;
+}
+table tbody td[data-title]:before {
+  content: attr(data-title);
+  float: left;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.54);
+}

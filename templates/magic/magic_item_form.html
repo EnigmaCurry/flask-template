@@ -1,0 +1,11 @@
+{% extends "magic/magic_base.html" %} {% block content %}
+<h2>Record a magical item:</h2>
+
+<form class="magic" method="post">
+    {{ form.csrf_token }}
+    <div class="field">
+        {{ form.name.label }} {{ form.name() }}
+    </div>
+  <input type="submit" />
+</form>
+{% endblock %}

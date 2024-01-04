@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+  {% block header %}{% endblock %}
+<style>
+    #media div {
+        width: 150px; float: left;
+        border: 1px soldid brown;
+    }
+    #media img {max-width: 140px;}
+</style>
+  <a href="/add-media">Add New Media</a>
+  {% if rows is not none %}
+    <div id="media">
+        {% for row in rows %}
+            <div >
+                <img  src="{{row['filepath']}}" title="{{row['title']}}"
+                /><BR/>
+                <span class="mdtext" style="display: none">![{{row['title']}}]({{row['filepath']}})</span> 
+            </div>    
+        {% endfor %}
+    </div>
+  {% endif %}  
+{% endblock %}
+
